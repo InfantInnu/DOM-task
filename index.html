@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom task</title>
+</head>
+<body>
+    <script>
+        var input = [
+     {
+          "id": 1,
+          "title": "Title 1",
+          "childrens": [
+               {
+                    "id": 2,
+                    "title": "Title 2",
+                    "childrens": []
+               }
+          ]
+     },
+     {
+          "id": 3,
+          "title": "Title 3",
+          "childrens": [
+               {
+                    "id": 4,
+                    "title": "Title 4",
+                    "childrens": [
+                         {
+                              "id": 5,
+                              "title": "Title 5",
+                              "childrens": []
+                         }
+                    ]
+               }
+          ]
+     }
+]
+var output=[];
+function recurse(inputPassed){
+    for(let i=0;i<inputPassed.length;i++){
+        let info={};
+        info.id=inputPassed[i].id;
+        info.title=inputPassed[i].title;
+        info.childrens=[];
+        if(inputPassed[i].childrens.length>0){
+            recurse(inputPassed[i].childrens);
+
+        }
+        else{}
+        output.push(info);
+    }
+}
+recurse(input);
+output.sort((a,b)=> (a.id > b.id) ? 1:-1)
+console.log("Output",output);
+    </script>
+    
+</body>
+</html>
